@@ -1,0 +1,75 @@
+Codebook:
+---------
+
+Files:
+------
+The following files were loaded as part of the run_analysis.R script:
+
+1. 'features.txt': List of all features.
+2. 'activity_labels.txt': Links the class labels with their activity name.
+3. 'train/X_train.txt': Training set.
+4. 'train/y_train.txt': Training labels.
+5. 'test/X_test.txt': Test set.
+6. 'test/y_test.txt': Test labels.
+7. 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
+8. 'test/subject_test.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+
+The final data set is written into "TidyData.txt" in the workspace folder.
+
+Variables:
+----------
+
+1. Subject: Represents the ID of the volunteers who took part in the original experiment.
+  Value range: 1-30
+  Class: Integer
+  
+2. Activity: Represents the kind of activity which the volunteer/subject performed.
+  Value range: 6 levels: "Walking", "Walking Up", "Walking Down", "Sitting", "Standing", "Laying"
+  Class: Factor
+  
+3. Variable: Represents the kind of measurement on which the Subject + Activity was tested. This only contains the mean and standard deviation related data from the original dataset.
+  Value range: 79 levels:
+[1] tBodyAcc-mean()-X               tBodyAcc-mean()-Y               tBodyAcc-mean()-Z               tBodyAcc-std()-X                tBodyAcc-std()-Y               
+[6] tBodyAcc-std()-Z                tGravityAcc-mean()-X            tGravityAcc-mean()-Y            tGravityAcc-mean()-Z            tGravityAcc-std()-X            
+[11] tGravityAcc-std()-Y             tGravityAcc-std()-Z             tBodyAccJerk-mean()-X           tBodyAccJerk-mean()-Y           tBodyAccJerk-mean()-Z          
+[16] tBodyAccJerk-std()-X            tBodyAccJerk-std()-Y            tBodyAccJerk-std()-Z            tBodyGyro-mean()-X              tBodyGyro-mean()-Y             
+[21] tBodyGyro-mean()-Z              tBodyGyro-std()-X               tBodyGyro-std()-Y               tBodyGyro-std()-Z               tBodyGyroJerk-mean()-X         
+[26] tBodyGyroJerk-mean()-Y          tBodyGyroJerk-mean()-Z          tBodyGyroJerk-std()-X           tBodyGyroJerk-std()-Y           tBodyGyroJerk-std()-Z          
+[31] tBodyAccMag-mean()              tBodyAccMag-std()               tGravityAccMag-mean()           tGravityAccMag-std()            tBodyAccJerkMag-mean()         
+[36] tBodyAccJerkMag-std()           tBodyGyroMag-mean()             tBodyGyroMag-std()              tBodyGyroJerkMag-mean()         tBodyGyroJerkMag-std()         
+[41] fBodyAcc-mean()-X               fBodyAcc-mean()-Y               fBodyAcc-mean()-Z               fBodyAcc-std()-X                fBodyAcc-std()-Y               
+[46] fBodyAcc-std()-Z                fBodyAcc-meanFreq()-X           fBodyAcc-meanFreq()-Y           fBodyAcc-meanFreq()-Z           fBodyAccJerk-mean()-X          
+[51] fBodyAccJerk-mean()-Y           fBodyAccJerk-mean()-Z           fBodyAccJerk-std()-X            fBodyAccJerk-std()-Y            fBodyAccJerk-std()-Z           
+[56] fBodyAccJerk-meanFreq()-X       fBodyAccJerk-meanFreq()-Y       fBodyAccJerk-meanFreq()-Z       fBodyGyro-mean()-X              fBodyGyro-mean()-Y             
+[61] fBodyGyro-mean()-Z              fBodyGyro-std()-X               fBodyGyro-std()-Y               fBodyGyro-std()-Z               fBodyGyro-meanFreq()-X         
+[66] fBodyGyro-meanFreq()-Y          fBodyGyro-meanFreq()-Z          fBodyAccMag-mean()              fBodyAccMag-std()               fBodyAccMag-meanFreq()         
+[71] fBodyBodyAccJerkMag-mean()      fBodyBodyAccJerkMag-std()       fBodyBodyAccJerkMag-meanFreq()  fBodyBodyGyroMag-mean()         fBodyBodyGyroMag-std()         
+[76] fBodyBodyGyroMag-meanFreq()     fBodyBodyGyroJerkMag-mean()     fBodyBodyGyroJerkMag-std()      fBodyBodyGyroJerkMag-meanFreq()
+Class: Factor
+
+4. Average: Represents the average value of a measurement for a given subject and activity.
+  Class : num
+  
+Analysis Outline:
+-----------------
+
+1. The training and test data sets are loaded from the files "xtest.txt", "ytest.txt", "xtrain.txt", "ytrain.txt".
+2. The features data which consists of the various kinds of measurements is loaded from "features.txt"
+3. The names of the columns of the xtest and xtrain datasets is mapped to the features data.
+4. The activity labels which consists of the kind of activities performed in the experiment is loaded from "activity_labels.txt"
+5. The levels of the activity labels is specified in the correct order and with descriptive labels.
+6. The ytest and ytrain data is coerced as a factor. The levels of these factors are mapped to the activity labels factor. 
+7. The names of the ytest and ytrain are appropriately named as "Activity"
+8, The xtest and ytest data is combined to form one dataframe. Similar action is performed on the training dataset.
+9. The Subject data for both the training and test datasets is loaded and combined with the respective data frames.
+10. The training and test datasets are merged using the rbind command.
+11. The unwanted columns are removed by searching for only the column names containing the mean or std string.
+12. The column names are rationalized using the make.names function to make them compatible with R.
+13. The tidy data set with the averages calculated for the measurements is generated. 
+14. The tidy data is melted to form a long data set with the Subject and Activity as ID Vars.
+
+References: 
+-----------
+
+1. ReadMe of the UCI HAR Dataset
+2. Features Info of the UCI HAR Dataset

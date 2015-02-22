@@ -1,4 +1,4 @@
-This ReadMe explains the approach taken towards completing the Course Project for the Getting Clean Data Coursera course. 
+This ReadMe explains the approach taken towards completing the Course Project for the Getting Clean Data Coursera course. Notes on the data in the columns can be found in Codebook.rmd. 
 
 run_analysis.R is the script that contains the code that analyses the UCI HAR Samsung Data and outputs a tidy data set as per Requirement 5 of the Course project. 
 
