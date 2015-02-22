@@ -71,4 +71,9 @@ make.names(colnames(finalData))
 # Create a tidy data set containing the Subject, Activity and Mean values of the measurements.
 tidyDataWithMean <- finalData %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
 
-tidyDataWithMean
+# Melt the data into the long form with the Subject and Activity columns as the ID colummns and the others as measure var columns.
+tidyDataMelted <- melt(data = tidyDataWithMean, id.vars = 1:2, measure.vars = 3:81, value.name = "Average")
+
+write.table(x = tidyDataMelted, file = "TidyData.txt", row.name = F)
+
+print(tidyDataMelted)  
