@@ -1,5 +1,6 @@
 # Load the dplyr package without warning/messages
 suppressWarnings(suppressMessages(library(dplyr)))
+suppressWarnings(suppressMessages(library(reshape2)))
 
 # Load the test and training data sets.
 xtest <- read.table("./test/X_test.txt",sep = "")
@@ -14,7 +15,7 @@ features <- select(features, -V1)
 # Rename the columns of the test and training data with the features.
 names(xtest) <- features[,1] 
 names(xtrain) <- features[,1] 
-
+ 
 # Load the Activity labels.
 activity_labels <- read.table("activity_labels.txt")
 # Remove the first column consisting of IDs.
