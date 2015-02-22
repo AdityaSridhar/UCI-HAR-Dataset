@@ -1,0 +1,43 @@
+This ReadMe explains the approach taken towards completing the Course Project for the Getting Clean Data Coursera course. 
+
+run_analysis.R is the script that contains the code that analyses the UCI HAR Samsung Data and outputs a tidy data set as per Requirement 5 of the Course project. 
+
+The following conditions are assumed as pre-requisites for the script to run successfully:
+------------------------------------------------------------------------------------------
+
+1. The current workspace is set inside the UCI-HAR-Dataset folder. E.g. D:/SamsungData/UCI-HAR-Dataset 
+2. The dplyr package has been installed. This can be done using the install.packages("dplyr")
+
+The Script routine consists of:
+-------------------------------
+
+1. The training and test data sets are loaded from the files. 
+2. The features data which consists of the various kinds of measurements is loaded.
+3. The names of the columns of the xtest and xtrain datasets is mapped to the features data.
+4. The activity labels which consists of the kind of activities performed in the experiment is loaded.
+5. The levels of the activity labels is specified in the correct order and with descriptive labels.
+6. The ytest and ytrain data is coerced as a factor. The levels of these factors are mapped to the activity labels factor. 
+7. The names of the ytest and ytrain are appropriately named as "Activity"
+8, The xtest and ytest data is combined to form one dataframe. Similar action is performed on the training dataset.
+9. The Subject data for both the training and test datasets is loaded and combined with the respective data frames.
+10. The training and test datasets are merged using the rbind command.
+11. The unwanted columns are removed by searching for only the column names containing the mean or std string.
+12. The column names are rationalized using the make.names function to make them compatible with R.
+13. Lastly, the tidy data set with the averages calculated for the measurements is generated. 
+
+Justification that the data is tidy:
+------------------------------------
+
+
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
