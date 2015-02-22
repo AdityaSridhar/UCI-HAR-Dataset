@@ -1,4 +1,4 @@
-# Load the dplyr package without warning/messages
+# Load the dplyr, reshape2 package without warning/messages
 suppressWarnings(suppressMessages(library(dplyr)))
 suppressWarnings(suppressMessages(library(reshape2)))
 
